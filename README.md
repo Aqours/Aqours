@@ -1,4 +1,5 @@
 # Aqours.github.io
+> [Donate](https://Aqours.github.io/donate.html)
 
 
 ## Experiment

@@ -2,8 +2,8 @@
 > [Donate](https://Aqours.github.io/donate.html)
 
 
-## Experiment
+## Laboratory
 
-- [Animation and Safari Stable](https://Aqours.github.io/experiment/animation-and-safari-stable.html)
-- [Matrix and Chrome Latest Canary](https://Aqours.github.io/experiment/matrix-and-chrome-latest-canary.html)
-- [Mode 7 Danmaku and Chrome Latest Canary](https://Aqours.github.io/experiment/mode-7-danmaku-and-chrome-latest-canary.html)
+- [Advanced Danmaku (on Chrome)](https://Aqours.github.io/laboratory/advanced-danmaku.html)
+- [Animation Play State (on Safari)](https://Aqours.github.io/laboratory/animation-play-state.html)
+- [DOM Matrix Calculation (on Chrome)](https://Aqours.github.io/laboratory/dom-matrix-calculation.html)

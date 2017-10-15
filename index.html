@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>四月的谎言 - 2B Pencils</title>
+    <title>零食大作战 - 2B Pencils</title>
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="keywords" content="2B Pencils, 2bps, Blog, Hellcom, typeof, 百合工坊, 板绘, Front-end">
@@ -31,7 +31,7 @@
             bottom: 0;
             left: 0;
             font-size: 100%;
-            background: white url("//wx4.sinaimg.cn/large/006G4xsfgy1fi945d4w84j33tu2lxkjp.jpg") no-repeat center;
+            background: white url("http://wx3.sinaimg.cn/large/006G4xsfgy1fkitog4yamj31hc0u0nk7.jpg") no-repeat center;
             background-size: cover;
         }
         #message {
@@ -45,6 +45,10 @@
             text-shadow: 0 0 0.5em white;
             cursor: default;
         }
+        #message[data-theme-color="white"] {
+            color: #eee;
+            text-shadow: 0 0 0.5em #222;
+        }
         #message a {
             border-bottom: 1px dotted;
         }
@@ -57,7 +61,7 @@
 <body>
 
 <article id="backdrop"></article>
-<section id="message">
+<section id="message" data-theme-color="white">
     <h1>Oh, Honey</h1>
     <p><span>Please contact me via e-mail: <a title="Send me e-mail" href="mailto:git@hub.moe">git@hub.moe</a></span><span>&nbsp;if you have any question</span></p>
     <p><a title="Connecting me with WeChat application" href="http://www.wechat.com" target="_blank">WeChat</a> ID: Hellcom</p>

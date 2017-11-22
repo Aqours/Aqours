@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Block browser</title>
+    <script src="../assets/pako.js"></script>
+    <script src="../assets/UPNG.js"></script>
+</head>
+<body>
+    <img src="../images/elephant.png" hidden>
+    <script>
+        const message = "This action will block your browser. Continous?";
+        self.confirm(message) && self.fetch("../inexistence_path/elephant.png", { // inexistence path
+            mode: "cors",
+            cache: "no-cache",
+        }).then(response => {
+            // does not check response.ok
+            // this will return an "incorrect"(unexcepted) ArrayBuffer
+            return response.arrayBuffer();
+        }).then(buffer => {
+            console.log(`"incorrect"(unexcepted) ArrayBuffer:`, buffer);
+            const dels = [];
+            const imgDatas = [];
+            const out = UPNG.decode(buffer);
+            console.log("decode:", out);
+
+            const frames = UPNG.toRGBA8(out);
+            console.log("frames:", frames);
+
+            for (let i = 0; i < out.frames.length; i++) {
+                dels.push(out.frames[i].delay);
+            }
+
+            const len = frames.length;
+            const canvas = document.createElement("canvas");
+            const context = canvas.getContext("2d");
+
+            canvas.width = out.width;
+            canvas.height = out.height;
+
+            for (let i = 0; i < frames.length; i++) {
+                imgDatas.push(new ImageData(new Uint8ClampedArray(frames[i]), out.width, out.height));
+            }
+
+            let counter = len;
+
+            function loop() {
+                const i = len - counter;
+                if (imgDatas[i]) {
+                    context.clearRect(0, 0, canvas.width, canvas.height);
+                    context.putImageData(imgDatas[i], 0, 0);
+                }
+                if (--counter <= 0) {
+                    counter = len;
+                }
+                setTimeout(loop, dels[len - counter] || dels[0]);
+            }
+
+            loop();
+            document.body.appendChild(canvas);
+        });
+    </script>
+</body>
+</html>

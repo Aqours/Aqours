@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Works fine</title>
+    <script src="../assets/pako.js"></script>
+    <script src="../assets/UPNG.js"></script>
+</head>
+<body>
+    <script>
+        self.fetch("../images/elephant.png", {
+            mode: "cors",
+            cache: "no-cache",
+        }).then(response => {
+            return response.ok ? response.arrayBuffer() : Promise.reject();
+        }).then(buffer => {
+            const dels = [];
+            const imgDatas = [];
+            const out = UPNG.decode(buffer);
+            console.log("decode:", out);
+
+            const frames = UPNG.toRGBA8(out);
+            console.log("frames:", frames);
+
+            for (let i = 0; i < out.frames.length; i++) {
+                dels.push(out.frames[i].delay);
+            }
+
+            const len = frames.length;
+            const canvas = document.createElement("canvas");
+            const context = canvas.getContext("2d");
+
+            canvas.width = out.width;
+            canvas.height = out.height;
+
+            for (let i = 0; i < frames.length; i++) {
+                imgDatas.push(new ImageData(new Uint8ClampedArray(frames[i]), out.width, out.height));
+            }
+
+            let counter = len;
+
+            function loop() {
+                const i = len - counter;
+                if (imgDatas[i]) {
+                    context.clearRect(0, 0, canvas.width, canvas.height);
+                    context.putImageData(imgDatas[i], 0, 0);
+                }
+                if (--counter <= 0) {
+                    counter = len;
+                }
+                setTimeout(loop, dels[len - counter] || dels[0]);
+            }
+
+            loop();
+            document.body.appendChild(canvas);
+        });
+    </script>
+</body>
+</html>

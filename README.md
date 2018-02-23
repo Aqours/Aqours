@@ -1,5 +1,5 @@
 # Aqours.github.io
-> [Donate](https://Aqours.github.io/donate.html)
+> [Donate](donate.html)
 
 
 ## Laboratory

@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <title>DOMMatrix</title>
+        <style>
+            #wrapper {
+                margin: 0 auto;
+                padding: 3em 0;
+                width: 1024px;
+            }
+
+            #wrapper h2 {
+                font-weight: 400;
+            }
+
+            .box {
+                display: inline-flex;
+                align-items: center;
+                justify-content: center;
+                margin-top: 1em;
+                margin-bottom: 5em;
+                padding: 1em;
+                color: #fff;
+                background-color: rebeccapurple;
+                transition: transform 0.2s;
+                cursor: default;
+            }
+        </style>
+    </head>
+    <body>
+        <article id="wrapper">
+            <section>
+                <h2>静态</h2>
+                <div class="box box1">3D旋转动画 - 哔哩哔哩 (゜-゜)つロ 干杯</div>
+            </section>
+            <section>
+                <h2>混合类型变换</h2>
+                <div><button class="apply2">应用变换</button> <button class="cancel2">取消变换</button></div>
+                <div class="box box2">3D旋转动画 - 哔哩哔哩 (゜-゜)つロ 干杯</div>
+            </section>
+            <section>
+                <h2>矩阵类型变换</h2>
+                <div><button class="apply3">应用变换</button> <button class="cancel3">取消变换</button></div>
+                <div class="box box3">3D旋转动画 - 哔哩哔哩 (゜-゜)つロ 干杯</div>
+            </section>
+        </article>
+
+        <script>
+            {
+                const box2 = document.querySelector(".box2");
+                const box3 = document.querySelector(".box3");
+                const tranform =
+                    "rotateX(34deg) rotateZ(-20deg) scaleY(2) perspective(200px) rotateY(20deg) translate(118px, 42px)";
+                const r34 = (34 / 180) * Math.PI;
+                const r20 = (20 / 180) * Math.PI;
+                const tMatrix = new DOMMatrix();
+
+                const t1 = new DOMMatrix();
+                t1.m22 = Math.cos(r34);
+                t1.m23 = Math.sin(r34);
+                t1.m32 = -Math.sin(r34);
+                t1.m33 = Math.cos(r34);
+
+                const t2 = new DOMMatrix();
+                t2.m11 = Math.cos(-r20);
+                t2.m12 = Math.sin(-r20);
+                t2.m21 = -Math.sin(-r20);
+                t2.m22 = Math.cos(-r20);
+
+                const t3 = new DOMMatrix();
+                t3.m22 = 2;
+
+                const t4 = new DOMMatrix();
+                t4.m34 = -1 / 200;
+
+                const t5 = new DOMMatrix();
+                t5.m11 = Math.cos(r20);
+                t5.m13 = -Math.sin(r20);
+                t5.m32 = Math.sin(r20);
+                t5.m33 = Math.cos(r20);
+
+                const t6 = new DOMMatrix();
+                t6.m41 = 118;
+                t6.m42 = 42;
+
+                tMatrix
+                    .multiplySelf(t1)
+                    .multiplySelf(t2)
+                    .multiplySelf(t3)
+                    .multiplySelf(t4)
+                    .multiplySelf(t5)
+                    .multiplySelf(t6);
+
+                document.querySelector(".apply2").onclick = e => (box2.style.transform = tranform);
+                document.querySelector(".cancel2").onclick = e => (box2.style.transform = "none");
+                document.querySelector(".apply3").onclick = e => (box3.style.transform = tMatrix.toString());
+                document.querySelector(".cancel3").onclick = e => (box3.style.transform = "none");
+            }
+        </script>
+    </body>
+</html>

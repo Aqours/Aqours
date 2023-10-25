@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <title>Picture in Picture</title>
+        <style>
+            div {
+                max-width: 720px;
+            }
+            video {
+                width: 100%;
+            }
+            div {
+                margin: 0.5em auto;
+            }
+        </style>
+    </head>
+    <body>
+        <div>
+            <button class="enter" title="Enter Picture-in-Picture mode">Enter PiP</button>
+            <button class="exit" title="Exit Picture-in-Picture mode">Exit PiP</button>
+            <button class="detach" title="Detach video element">detach</button>
+            <button class="attach" title="Attach video element">attach</button>
+        </div>
+        <div class="container">
+            <video controls muted src="https://x9niew.bl.files.1drv.com/y4mAZmJ2PZ4PiMxNwI2gEShwTB-9zkGHdIcZYLbcGU4NxuDk1T2oejzLmkxG1dwVE5rviqY3jQbvpNp1YpfWpv63ErknOZAEO-Up_wIF4JgZdwtyYJ9hkCY6JomDDwjmtuuPqlHh_nvcxG7Qx60MhjZCaOqkPrENP3Fab3eZIVbuemfGRx6vDE38aO18mxxs7mJI8ExH82rubOo77iY1ZUYwQ"></video>
+        </div>
+        <script>
+            {
+                const container = document.querySelector(".container");
+                const video = document.querySelector("video");
+                const enter = document.querySelector(".enter");
+                const exit = document.querySelector(".exit");
+                const detach = document.querySelector(".detach");
+                const attach = document.querySelector(".attach");
+
+                enter.onclick = function() {
+                    if (document.pictureInPictureEnabled) {
+                        if (document.pictureInPictureElement !== video) {
+                            video.requestPictureInPicture().catch(error => {
+                                alert("Video failed to enter Picture-in-Picture mode");
+                            });
+                        }
+                    } else if (typeof video.webkitSetPresentationMode === "function") {
+                        if (video.webkitPresentationMode === "inline") {
+                            video.webkitSetPresentationMode("picture-in-picture");
+                        }
+                    } else {
+                        alert("Your browser does not support PiP");
+                    }
+                };
+
+                exit.onclick = function() {
+                    if (document.pictureInPictureEnabled) {
+                        if (document.pictureInPictureElement === video) {
+                            document.exitPictureInPicture();
+                        }
+                    } else if (typeof video.webkitSetPresentationMode === "function") {
+                        if (video.webkitPresentationMode === "picture-in-picture") {
+                            video.webkitSetPresentationMode("inline");
+                        }
+                    }
+                };
+
+                detach.onclick = function() {
+                    if (video.parentElement) {
+                        video.remove();
+                    }
+                };
+
+                attach.onclick = function() {
+                    if (!video.parentElement) {
+                        container.append(video);
+                    }
+                };
+            }
+        </script>
+    </body>
+</html>

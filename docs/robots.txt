@@ -1,0 +1,6 @@
+User-agent: *
+Disallow: /assets/alipay.jpg
+Disallow: /assets/wechat-pay.jpg
+Disallow: /blackboard/
+Disallow: /laboratory/
+Disallow: /CNAME

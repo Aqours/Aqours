@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <title>Animation Play State</title>
+        <style>
+            #wrapper h2 {
+                font-weight: 400;
+                text-align: center;
+            }
+
+            #surface {
+                margin: 5em auto;
+                height: 20em;
+                width: 20em;
+                border-radius: 50%;
+                background: url("../assets/role_animation-play-state.jpg") no-repeat;
+                background-size: cover;
+                animation: active-rotation 5s linear both paused infinite;
+            }
+
+            #surface:hover {
+                animation-play-state: running;
+            }
+
+            @keyframes active-rotation {
+                from {
+                    transform: rotate(0deg);
+                }
+                to {
+                    transform: rotate(360deg);
+                }
+            }
+        </style>
+    </head>
+    <body>
+        <article id="wrapper">
+            <section>
+                <h2>Animation Play State</h2>
+                <div id="surface"></div>
+            </section>
+        </article>
+    </body>
+</html>

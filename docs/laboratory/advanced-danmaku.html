@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <title>Advanced Danmaku</title>
+        <style>
+            #wrapper {
+                margin: 0 auto;
+                padding: 3em 0;
+                width: 1024px;
+            }
+
+            #wrapper h2 {
+                font-weight: 400;
+            }
+
+            .box {
+                display: inline-flex;
+                align-items: center;
+                justify-content: center;
+                margin-top: 1em;
+                margin-bottom: 5em;
+                padding: 1em;
+                color: #fff;
+                background-color: rebeccapurple;
+                cursor: default;
+            }
+
+            .box2 {
+                animation: active-rotateY 2s linear infinite alternate paused;
+            }
+
+            .box2:hover {
+                animation-play-state: running;
+            }
+
+            .box3 {
+                animation: active-translate 3s linear infinite alternate paused;
+            }
+
+            .box3:hover {
+                animation-play-state: running;
+            }
+
+            .box4 {
+                animation: active-blend 3s linear infinite alternate paused;
+            }
+
+            .box4:hover {
+                animation-play-state: running;
+            }
+
+            @keyframes active-rotateY {
+                from {
+                    transform: perspective(300px) rotateY(0deg);
+                }
+                to {
+                    transform: perspective(300px) rotateY(50deg);
+                }
+            }
+
+            @keyframes active-translate {
+                0% {
+                    transform: translate(0px, 0px);
+                }
+                50% {
+                    transform: translate(400px, 100px);
+                }
+                100% {
+                    transform: translate(800px, 0px);
+                }
+            }
+
+            @keyframes active-blend {
+                0% {
+                    transform: translate(0px, 0px) perspective(300px) rotateY(0deg);
+                }
+                50% {
+                    transform: translate(400px, 100px) perspective(300px) rotateY(50deg);
+                }
+                100% {
+                    transform: translate(800px, 0px) perspective(300px) rotateY(50deg);
+                }
+            }
+        </style>
+    </head>
+    <body>
+        <article id="wrapper">
+            <section>
+                <h2>静态</h2>
+                <div class="box box1">3D旋转动画 - 哔哩哔哩 (゜-゜)つロ 干杯</div>
+            </section>
+            <section>
+                <h2>变换</h2>
+                <div class="box box2">3D旋转动画 - 哔哩哔哩 (゜-゜)つロ 干杯</div>
+            </section>
+            <section>
+                <h2>路径</h2>
+                <div class="box box3">3D旋转动画 - 哔哩哔哩 (゜-゜)つロ 干杯</div>
+            </section>
+            <section>
+                <h2>变换+路径</h2>
+                <div class="box box4">3D旋转动画 - 哔哩哔哩 (゜-゜)つロ 干杯</div>
+            </section>
+            <section>
+                <h2>CSS3 Motion Path</h2>
+                <img
+                    src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHhtbG5zOnhsaW5rP
+      SJodHRwOi8vd3d3LnczLm9yZy8xOTk5L3hsaW5rIiB3aWR0aD0iNDcwIiBoZWlnaHQ9IjEyMCI+CjxzdHlsZSB0eXBlPSJ0ZXh0L2Nz
+      cyI+Ci5wYXRoe2ZpbGw6bm9uZTtzdHJva2U6IzAwQUVFRjtzdHJva2Utd2lkdGg6MztzdHJva2UtbGluZWNhcDpyb3VuZDtzdHJva2U
+      tbWl0ZXJsaW1pdDoxMDtzdHJva2UtZGFzaGFycmF5OjAuNDk5Nyw0Ljk5NzM7fQoudGV4dHtmb250LWZhbWlseTonTXlyaWFkUHJvLV
+      JlZ3VsYXInO2ZvbnQtc2l6ZToxMjt9Cjwvc3R5bGU+CjxkZWZzPgo8cGF0aCBpZD0icGxhbmUiIGQ9Ik0xNS4xLTYuMkgzLjRsLTYuM
+      y05LjljMS44LTAuMyw1LjQtMS41LDUuNC0zLjZzLTQuOC0zLjYtNi4zLTMuNmgtMy45bC00LjUtNi45aC04LjRsMi40LDYuOWgtMC4z
+      djcuMmgzbDMuNiw5LjloLTE1LjlsLTYuNi02LjZoLTQuOGw1LjcsOS42djcuOGwtNS43LDkuNmg0LjhsNi42LTYuNmgxNS45bC0zLjY
+      sOS42aC0zdjcuMmgwLjNsLTIuNCw2LjloOC43bDQuNS02LjloMy45YzEuNSwwLDYuMy0xLjUsNi4zLTMuNmMwLTEuOC0zLjYtMy4zLT
+      UuNC0zLjZsNi4zLTkuOWgxMS43YzMuOSwwLDE4LTIuNywxOC02LjlDMzMuMS0zLjUsMTktNi4yLDE1LjEtNi4yeiIvPgo8L2RlZnM+C
+      jx1c2UgeGxpbms6aHJlZj0iI3BsYW5lIiB0cmFuc2Zvcm09InRyYW5zbGF0ZSg1Ny44LDQ1KSByb3RhdGUoLTUyKSIvPgo8dXNlIHhs
+      aW5rOmhyZWY9IiNwbGFuZSIgdHJhbnNmb3JtPSJ0cmFuc2xhdGUoMjQwLDQ1KSByb3RhdGUoMjQpIi8+Cjx1c2UgeGxpbms6aHJlZj0
+      iI3BsYW5lIiB0cmFuc2Zvcm09InRyYW5zbGF0ZSg0MjMsNDcpIHJvdGF0ZSgtNTUpIi8+CjxwYXRoIGNsYXNzPSJwYXRoIiBkPSJNND
+      IxLjIsNTBDMzQzLjUsMTc1LjUsMTQyLjEtODYsNTcuOCw0NSIvPgo8L3N2Zz4="
+                />
+            </section>
+            <section>
+                <h2>WAAPI</h2>
+                <div>
+                    <button class="play">播放</button> <button class="pause">暂停</button>
+                    <button class="cancel">取消</button> <button class="reverse">反向</button>
+                    <button class="finish">完成</button>
+                </div>
+                <div class="box box5">3D旋转动画 - 哔哩哔哩 (゜-゜)つロ 干杯</div>
+            </section>
+        </article>
+
+        <script>
+            {
+                const element = document.querySelector(".box5");
+                const keyframes = new KeyframeEffect(
+                    element,
+                    [
+                        {
+                            transform: "translate(0px, 0px) perspective(300px) rotateY(0deg)",
+                            opacity: 1,
+                            offset: 0,
+                        },
+                        {
+                            transform: "translate(400px, 100px) perspective(300px) rotateY(50deg)",
+                            opacity: 0.5,
+                            offset: 0.5,
+                        },
+                        {
+                            transform: "translate(800px, 0px) perspective(300px) rotateY(50deg)",
+                            opacity: 1,
+                            offset: 1,
+                        },
+                    ],
+                    {
+                        delay: 500,
+                        direction: "alternate",
+                        duration: 3000,
+                        endDelay: 1000,
+                        iterations: 3,
+                        fill: "both",
+                    },
+                );
+                const animation = new Animation(keyframes);
+                document.querySelector("button.play").onclick = e => animation.play();
+                document.querySelector("button.pause").onclick = e => animation.pause();
+                document.querySelector("button.cancel").onclick = e => animation.cancel();
+                document.querySelector("button.reverse").onclick = e => animation.reverse();
+                document.querySelector("button.finish").onclick = e => animation.finish();
+            }
+        </script>
+    </body>
+</html>

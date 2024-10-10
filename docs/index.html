@@ -9,6 +9,7 @@
         <link rel="icon" href="favicon.ico" />
         <link rel="canonical" href="https://www.hub.moe/" />
         <link rel="dns-prefetch" href="https://blog.hub.moe/" />
+        <link rel="dns-prefetch" href="https://photo.hub.moe/" />
         <link rel="preload" href="https://www.hub.moe/assets/fallback.jpeg" as="image" id="fallbackImage" />
         <link href="https://fonts.googleapis.com/css?family=Zilla+Slab:500,600" rel="stylesheet" />
         <style>
@@ -87,6 +88,7 @@
             <h1 hidden>Homepage</h1>
             <section>
                 <p><a href="https://blog.hub.moe" title="Welcome to my blog">My Blog</a></p>
+                <p><a href="https://photo.hub.moe" title="Traveling Bits and Pieces">Photo Gallery</a></p>
                 <p><a href="https://t.me/Kemuqi" title="Contact me by Telegram">Telegram: Kemuqi</a></p>
                 <p><a title="Contact me by WeChat">WeChat: Hellcom</a></p>
             </section>
@@ -115,30 +117,34 @@
                     "https://tva4.sinaimg.cn/large/006G4xsfgy1ftn0v1ob9mj30rs0oxgpm.jpg",
                     "https://tva1.sinaimg.cn/large/006G4xsfgy1h5vmd5mx1vj31hc0u01kx.jpg",
                     "https://tva2.sinaimg.cn/large/006G4xsfgy1gsmhsbb40oj30o30k2gop.jpg",
-                ];
+                ]
 
-                const image = new Image();
-                const fallbackImage = document.getElementById('fallbackImage');
-                const backdrop = document.querySelector("aside > i");
-                const targetUrl = backdrops[Date.now() % backdrops.length];
-                const defaultUrl = fallbackImage.href;
+                const image = new Image()
+                const fallbackImage = document.getElementById('fallbackImage')
+                const backdrop = document.querySelector("aside > i")
+                const proxySinaImg = srcUrl => {
+                    const proxyServer = 'https://blog.hub.moe/api/sinaimg?name='
+                    const filename = srcUrl.split('/').pop()
+                    return proxyServer + filename
+                }
+                const targetUrl = proxySinaImg(backdrops[Date.now() % backdrops.length])
+                const defaultUrl = fallbackImage.href
                 const setBackgroundImage = srcUrl => {
                     if (backdrop) {
-                        backdrop.style.backgroundImage = `url(${srcUrl})`;
-                        backdrop.dataset.ready = srcUrl;
+                        backdrop.style.backgroundImage = `url(${srcUrl})`
+                        backdrop.dataset.ready = srcUrl
                     }
-                };
+                }
 
-                image.referrerPolicy = "no-referrer";
                 image.onload = function() {
-                    image.onload = image.onerror = null;
-                    setBackgroundImage(targetUrl);
-                };
+                    image.onload = image.onerror = null
+                    setBackgroundImage(targetUrl)
+                }
                 image.onerror = function() {
-                    image.onload = image.onerror = null;
-                    setBackgroundImage(defaultUrl);
-                };
-                image.src = targetUrl;
+                    image.onload = image.onerror = null
+                    setBackgroundImage(defaultUrl)
+                }
+                image.src = targetUrl
             }
         </script>
 

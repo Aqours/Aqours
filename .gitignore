@@ -182,3 +182,4 @@ pip-log.txt
 # Generated File
 yarn.lock
 package-lock.json
+.next

@@ -1,0 +1,126 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>常用视频网站外链播放器一览</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="常用视频网站外链播放器一览" />
+    <style>
+      body {
+        margin: 0;
+      }
+      #app {
+        margin: auto;
+        width: 720px;
+      }
+      section:after {
+        content: "";
+        display: block;
+        margin-top: 1em;
+        border-bottom: lightgray 1px solid;
+      }
+      h2,
+      h3 {
+        text-align: center;
+      }
+      h3 {
+        user-select: none;
+        cursor: pointer;
+        transition: color 200ms;
+      }
+      h3:hover {
+        color: #0ba396;
+      }
+      iframe {
+        margin: auto;
+        display: block;
+        width: 720px;
+        height: 480px;
+        box-shadow: 0 0 8px #f1f2f3;
+        background-color: lightgray;
+      }
+    </style>
+  </head>
+  <body>
+    <template id="tmp">
+      <section>
+        <h3 title="点击载入播放器"></h3>
+        <iframe
+          scrolling="no"
+          border="0"
+          frameborder="no"
+          framespacing="0"
+          allowfullscreen="true"
+        ></iframe>
+      </section>
+    </template>
+
+    <div id="app">
+      <section id="instruction">
+        <h2>使用说明</h2>
+        <p>由于播放器太多了，默认不加载播放器。<b>点击标题，可单独加载播放器。</b></p>
+        <p>点击下方按钮，可载入全部播放器。</p>
+        <button id="load-all">加载全部播放器</button>
+      </section>
+    </div>
+
+    <script>
+      const app = document.getElementById("app");
+      const tmp = document.getElementById("tmp");
+      const detail = [
+        {
+          title: "哔哩哔哩",
+          url: "//player.bilibili.com/player.html?aid=346590001&bvid=BV1WR4y1X7RP&cid=861354809&page=1",
+        },
+        {
+          title: "腾讯视频",
+          url: "https://v.qq.com/txp/iframe/player.html?vid=z0044syxhg5",
+        },
+        {
+          title: "爱奇艺",
+          url: "https://open.iqiyi.com/developer/player_js/coopPlayerIndex.html?vid=9391b7c4e78a27ff326eaad5a227948a&tvId=1430272500&accessToken=2.ef9c39d6c7f1d5b44768e38e5243157d&appKey=8c634248790d4343bcae1f66129c1010&appId=1368&height=100%&width=100%",
+        },
+        {
+          title: "优酷",
+          url: "https://player.youku.com/embed/XNTkxNDQ1MDU3Mg==",
+        },
+        {
+          title: "西瓜视频",
+          url: "https://www.ixigua.com/iframe/6957322671927329311?autoplay=0",
+        },
+        {
+          title: "搜狐视频",
+          url: "https://tv.sohu.com/s/sohuplayer/iplay.html?bid=394470238&autoplay=true&disablePlaylist=true",
+        },
+        {
+          title: "PP视频",
+          url: "//player.pptv.com/iframe/index.html#id=9053256&ctx=o=v_share",
+        },
+        {
+          title: "YouTube",
+          url: "https://www.youtube.com/embed/XGf5HXhnXG8",
+        },
+      ];
+      const fragment = document.createDocumentFragment();
+      const loadAll = document.getElementById("load-all");
+      const titles = [];
+
+      detail.forEach((item) => {
+        const n = tmp.content.cloneNode(true);
+        const h3 = n.querySelector("h3");
+        const iframe = n.querySelector("iframe");
+        h3.textContent = item.title;
+        h3.onclick = () => {
+          if (!iframe.src) {
+            iframe.src = item.url;
+          }
+        };
+        titles.push(h3);
+        fragment.appendChild(n);
+      });
+
+      app.appendChild(fragment);
+      loadAll.onclick = () => titles.forEach((h3) => h3.click());
+    </script>
+  </body>
+</html>

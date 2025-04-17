@@ -1,0 +1,182 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>L&H HomeLab</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="I immerse myself in interesting things" />
+    <link rel="icon" href="assets/favicon.ico" />
+    <link rel="canonical" href="https://www.hub.moe/" />
+    <link rel="dns-prefetch" href="https://blog.hub.moe/" />
+    <link rel="dns-prefetch" href="https://photo.hub.moe/" />
+    <link
+      rel="preload"
+      href="https://www.hub.moe/assets/fallback.jpeg"
+      as="image"
+      id="fallbackImage"
+    />
+    <link href="https://fonts.googleapis.com/css?family=Zilla+Slab:500,600" rel="stylesheet" />
+    <style>
+      body {
+        margin: 0;
+        font-family:
+          "Zilla Slab",
+          -apple-system,
+          Georgia,
+          "Bookman Old Style",
+          "Palatino Linotype",
+          serif;
+        font-size: 1.1rem;
+        letter-spacing: 0.2pt;
+        writing-mode: vertical-lr;
+      }
+      aside {
+        position: fixed;
+        top: -1rem;
+        right: -1rem;
+        bottom: -1rem;
+        left: -1rem;
+        background: rgb(28, 28, 28) url("assets/texture.png") repeat center;
+        z-index: -100;
+      }
+      aside::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 0;
+        background-image: radial-gradient(
+          circle at bottom left,
+          rgba(255, 255, 255, 0.8) 0%,
+          transparent 25rem
+        );
+        z-index: -10;
+      }
+      i {
+        display: block;
+        position: absolute;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 0;
+        background: center no-repeat;
+        background-size: cover;
+        filter: blur(3px);
+        opacity: 0;
+        transition: opacity 1000ms 50ms cubic-bezier(0.18, 0.89, 0.32, 1.28);
+      }
+      i[data-ready] {
+        opacity: 1;
+      }
+      aside::before,
+      i::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 0;
+        background-image: radial-gradient(
+          circle at bottom left,
+          rgba(255, 255, 255, 0.8) 0%,
+          transparent 25rem
+        );
+        z-index: -10;
+      }
+      article {
+        margin: 1em;
+        text-align: right;
+        writing-mode: vertical-rl;
+      }
+      a[href] {
+        text-decoration: none;
+        border-block-end: 1px solid;
+      }
+      @media all and (max-width: 640px) {
+        aside {
+          display: none;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <aside><i></i></aside>
+    <article>
+      <h1 hidden>Homepage</h1>
+      <section>
+        <p><a href="https://blog.hub.moe" title="Welcome to my blog">My Blog</a></p>
+        <p><a href="https://photo.hub.moe" title="Traveling Bits and Pieces">Photo Gallery</a></p>
+        <p><a href="https://t.me/Kemuqi" title="Contact me by Telegram">Telegram: Kemuqi</a></p>
+        <p><a title="Contact me by WeChat">WeChat: Hellcom</a></p>
+      </section>
+      <p>Copyright © L&H. Since 2014</p>
+    </article>
+    <script>
+      {
+        const backdrops = [
+          "https://tvax1.sinaimg.cn/large/006G4xsfgy1g5d18fmps3j31kw172gtp.jpg",
+          "https://tva4.sinaimg.cn/large/006G4xsfgy1g24ng45jgyj30go0fwqfx.jpg",
+          "https://tva3.sinaimg.cn/large/006G4xsfgy1fdth34ubelj31hc0u0at6.jpg",
+          "https://tva3.sinaimg.cn/large/006G4xsfgy1fdth35iih7j31kw0w0dm4.jpg",
+          "https://tvax3.sinaimg.cn/large/006G4xsfgy1g6qudaa91sj30xc0n27d7.jpg",
+          "https://tva2.sinaimg.cn/large/006G4xsfgy1g6qva3l22hj30xc0hiasc.jpg",
+          "https://tvax4.sinaimg.cn/large/006G4xsfgy1fdth34zib1j31hc0u0qd8.jpg",
+          "https://tvax2.sinaimg.cn/large/006G4xsfgy1fdth352s5qj31hc0u0wsw.jpg",
+          "https://tvax1.sinaimg.cn/large/006G4xsfgy1g6qvcoervjj30xc0u01jf.jpg",
+          "https://tva1.sinaimg.cn/large/006G4xsfgy1g6qv5hs9v6j30m80p0dms.jpg",
+          "https://tvax2.sinaimg.cn/large/006G4xsfgy1g6qv43gfqzj30hs0hsdja.jpg",
+          "https://tvax4.sinaimg.cn/large/006G4xsfgy1g2zhy6otyvj30m80etta8.jpg",
+          "https://tvax4.sinaimg.cn/large/006G4xsfgy1ffxvuwkuzkj31hc0u0qr7.jpg",
+          "https://tva3.sinaimg.cn/large/006G4xsfgy1ffxvupqktjj31hc0u0tz0.jpg",
+          "https://tvax4.sinaimg.cn/large/006G4xsfly1fnvf2byhrqj30zk0k0dmf.jpg",
+          "https://tva3.sinaimg.cn/large/006G4xsfgy1fqgnn9yjlwj30xc0m8u0x.jpg",
+          "https://tvax3.sinaimg.cn/large/006G4xsfgy1fsy3hy0m47j31510w4guf.jpg",
+          "https://tva4.sinaimg.cn/large/006G4xsfgy1ftn0v1ob9mj30rs0oxgpm.jpg",
+          "https://tva1.sinaimg.cn/large/006G4xsfgy1h5vmd5mx1vj31hc0u01kx.jpg",
+          "https://tva2.sinaimg.cn/large/006G4xsfgy1gsmhsbb40oj30o30k2gop.jpg",
+        ];
+
+        const image = new Image();
+        const fallbackImage = document.getElementById("fallbackImage");
+        const backdrop = document.querySelector("aside > i");
+        const proxySinaImg = (srcUrl) => {
+          const proxyServer = "https://blog.hub.moe/api/sinaimg?name=";
+          const filename = srcUrl.split("/").pop();
+          return proxyServer + filename;
+        };
+        const targetUrl = proxySinaImg(backdrops[Date.now() % backdrops.length]);
+        const defaultUrl = fallbackImage.href;
+        const setBackgroundImage = (srcUrl) => {
+          if (backdrop) {
+            backdrop.style.backgroundImage = `url(${srcUrl})`;
+            backdrop.dataset.ready = srcUrl;
+          }
+        };
+
+        image.onload = function () {
+          image.onload = image.onerror = null;
+          setBackgroundImage(targetUrl);
+        };
+        image.onerror = function () {
+          image.onload = image.onerror = null;
+          setBackgroundImage(defaultUrl);
+        };
+        image.src = targetUrl;
+      }
+    </script>
+
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-4QS4W9PF83"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag() {
+        dataLayer.push(arguments);
+      }
+      gtag("js", new Date());
+
+      gtag("config", "G-4QS4W9PF83");
+    </script>
+  </body>
+</html>

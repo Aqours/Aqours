@@ -2,6 +2,12 @@ import { connection } from "next/server";
 import * as fs from "node:fs/promises";
 import path from "node:path";
 import Link from "next/link";
+import type { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "Static HTML Files",
+  description: "List all static html files",
+};
 
 async function readHtmlFileFromDir(dir: string) {
   const htmlFiles: string[] = [];
